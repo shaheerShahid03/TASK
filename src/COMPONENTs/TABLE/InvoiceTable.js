@@ -30,7 +30,7 @@ const InvoiceTable = () => {
               <p className="mt-2 extra-margin">Total </p>
               <p className="mt-2">VAT%</p>
               <p className="mt-2 exxtra-margin ">Discount</p>
-              <p className="mt-2 ">Total</p>
+              <p className="mt-2 t">Total</p>
             </div>
           </div>
         </div>
@@ -203,9 +203,7 @@ const InvoiceTable = () => {
               <p>dynamic val</p>
             </div>
             <div className="btn">
-              <Button className="submit" variant="contained">
-                Contained
-              </Button>
+              <Button variant="contained">Contained</Button>
             </div>
           </div>
         </div>
