@@ -159,7 +159,5 @@
   background: #ffffff 0% 0% no-repeat padding-box;
 }
 .deleteIcon {
-  position: absolute;
-  top: 300px;
-  right: 125px;
+  margin-right: -10px;
 }
