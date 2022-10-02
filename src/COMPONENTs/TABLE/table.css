@@ -135,6 +135,9 @@
   margin-left: 18px;
   margin-top: 10px;
 }
+.text {
+  text-align: right;
+}
 .wrapper-2 {
   width: 26.5%;
 
@@ -154,4 +157,9 @@
   margin-right: 0px;
 
   background: #ffffff 0% 0% no-repeat padding-box;
+}
+.deleteIcon {
+  position: absolute;
+  top: 300px;
+  right: 125px;
 }

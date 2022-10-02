@@ -5,6 +5,7 @@ import Select from "@mui/material/Select";
 import InputAdornment from "@mui/material/InputAdornment";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 import "./table.css";
 const InvoiceTable = () => {
@@ -69,7 +70,7 @@ const InvoiceTable = () => {
             <div className="unit br-left ">
               <div className="mt-2">
                 <FormControl
-                  className="selectUnit blackColor ms-2"
+                  className="selectUnit blackColor text-center ms-2"
                   variant="standard"
                 >
                   <Select
@@ -88,13 +89,14 @@ const InvoiceTable = () => {
 
             {/* Cost Price */}
 
-            <div className="costPrice br-left ">
-              <div className="mt-2">
+            <div className="costPrice  text br-left ">
+              <div className="  text-center mt-2">
                 <FormControl
                   className="cost  ms-2 blackColor"
                   variant="standard"
                 >
                   <Input
+                    className="text-center"
                     // value={item.costPrice}
                     // onChange={(e) => setCostPrice(e.target.value)}
 
@@ -115,7 +117,7 @@ const InvoiceTable = () => {
             <div className="quantity br-left ">
               <div className="mt-2">
                 <FormControl
-                  className="quan blackColor ms-2"
+                  className="quan text blackColor ms-2"
                   variant="standard"
                 >
                   <Input
@@ -174,13 +176,14 @@ const InvoiceTable = () => {
             {/* Total INC*/}
 
             <div className="total br-left ">
-              <div className="mt-3">
+              <div className="mt-3 d-flex">
                 <p
                   // onChange={(e) => setTotalInc(e.target.value)}
                   className=" blackColor totalIncVAT text-center ms-2"
                 >
                   TOTAL SAR
                 </p>
+                <RemoveCircleIcon className="deleteIcon" />
               </div>
             </div>
           </div>
