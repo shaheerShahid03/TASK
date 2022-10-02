@@ -1,0 +1,10 @@
+.invoice {
+  height: 26px;
+  margin-top: 113px;
+  font: normal normal normal 14px/26px Cairo !important;
+}
+
+.purchase {
+  height: 39px;
+  font: normal normal 800 21px/39px Cairo;
+}

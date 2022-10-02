@@ -1,0 +1,149 @@
+.item {
+  height: 33px;
+  margin-top: 20px;
+  font: normal normal bold 18px/33px Cairo;
+}
+
+.heading {
+  height: 45px;
+
+  justify-content: space-around;
+  background: #0f5a8e 0% 0% no-repeat padding-box;
+  box-shadow: 0px 10px 20px #dfdfdf33;
+  border-radius: 8px 8px 0px 0px;
+
+  font: normal normal bold 12px/23px Cairo !important;
+
+  color: #ffffff;
+}
+
+.border {
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  border: 1px solid #e9e9e9;
+  border-radius: 0px 0px 8px 8px;
+}
+.x {
+  margin-left: -30px;
+}
+
+.exxtra-margin {
+  margin-left: -10px;
+}
+.extra-margin {
+  margin-left: -20px;
+}
+
+.u {
+  margin-left: 100px !important;
+}
+
+.sub-border {
+  margin-top: 17px;
+  margin-left: 11px;
+  margin-right: 11px;
+  margin-bottom: 11px;
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 10px 20px #dcdcdc33;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+}
+
+.fontSize {
+  font: normal normal normal 12px/23px Cairo;
+  letter-spacing: 0px;
+  color: #9e9eae;
+}
+
+.br-left {
+  border-left: 1px solid #efefef;
+}
+
+.select {
+  width: 20%;
+}
+.selectItem {
+  display: flex;
+  height: 78px;
+
+  width: 90%;
+}
+
+.selectUnit {
+  width: 90%;
+}
+
+.unit {
+  width: 11%;
+}
+
+.cost {
+  width: 90%;
+}
+
+.costPrice {
+  width: 12%;
+}
+
+.quantity {
+  width: 11%;
+}
+
+.quan {
+  width: 90%;
+}
+
+.totalVat {
+  width: 90%;
+}
+
+.total {
+  width: 10%;
+  margin-top: 3px;
+}
+
+.VAT {
+  width: 10%;
+  margin-top: 3px;
+}
+
+.vatPercent {
+  width: 90%;
+}
+
+.dist {
+  width: 90%;
+}
+
+.discount {
+  width: 12%;
+  margin-right: 11.5px;
+  margin-left: 12px;
+}
+
+.row-5 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.summary {
+  margin-left: 18px;
+  margin-top: 10px;
+}
+.s {
+  margin-right: 10px;
+  margin-left: 18px;
+  margin-top: 10px;
+}
+.wrapper-2 {
+  width: 295px;
+
+  margin-top: 30px;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+}
+
+.submit {
+  width: 270px;
+}
