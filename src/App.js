@@ -1,5 +1,5 @@
 import "./App.css";
-import Headings from "./COMPONENTs/TABLE/HEADING/Headings";
+import Headings from "./COMPONENTs/HEADING/Headings";
 import InvoiceTable from "./COMPONENTs/TABLE/InvoiceTable";
 
 function App() {

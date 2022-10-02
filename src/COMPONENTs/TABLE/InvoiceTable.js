@@ -183,7 +183,10 @@ const InvoiceTable = () => {
                 >
                   TOTAL SAR
                 </p>
-                <RemoveCircleIcon className="deleteIcon" />
+                <RemoveCircleIcon
+                  className="deleteIcon"
+                  style={{ color: "red" }}
+                />
               </div>
             </div>
           </div>
