@@ -130,7 +130,10 @@ const InvoiceTable = () => {
 
             <div className="total br-left ">
               <div className="mt-3">
-                <p className=" blackColor totalVat ms-2"> TOTAL SAR</p>
+                <p className="text-center blackColor totalVat ms-2">
+                  {" "}
+                  TOTAL SAR
+                </p>
               </div>
             </div>
 
@@ -138,7 +141,10 @@ const InvoiceTable = () => {
 
             <div className="VAT br-left ">
               <div className="mt-3">
-                <p className=" blackColor vatPercent ms-2"> VAT vatSAR</p>
+                <p className="text-center blackColor vatPercent ms-2">
+                  {" "}
+                  VAT vatSAR
+                </p>
               </div>
             </div>
 
@@ -171,7 +177,7 @@ const InvoiceTable = () => {
               <div className="mt-3">
                 <p
                   // onChange={(e) => setTotalInc(e.target.value)}
-                  className=" blackColor totalIncVAT ms-2"
+                  className=" blackColor totalIncVAT text-center ms-2"
                 >
                   TOTAL SAR
                 </p>
@@ -198,7 +204,7 @@ const InvoiceTable = () => {
               <p>dynamic val</p>
             </div>
 
-            <div className="d-flex justify-content-between s blueColor">
+            <div className="d-flex justify-content-between grandTotal s blueColor">
               <p>Grand Total</p>
               <p>dynamic val</p>
             </div>

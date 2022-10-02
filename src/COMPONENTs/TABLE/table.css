@@ -146,3 +146,12 @@
 .t {
   margin-right: 20px;
 }
+
+.grandTotal {
+  height: 39px;
+  padding: 5px 20px 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+}
