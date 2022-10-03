@@ -9,15 +9,11 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 import "./table.css";
 const InvoiceTable = () => {
-  const [costPrice, setCostPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [totalExc, setTotalExc] = useState("");
-  const [discount, setDiscount] = useState("");
-  const [totalInc, setTotalInc] = useState("");
+  // useState for grand total ,sub total , Vat and items count
   const [grandTotal, setGrandTotal] = useState("");
   const [subTotal, setSubTotal] = useState("");
   const [totalVat, setTotalVat] = useState("");
-  const [itemsCounter, setItemsCounter] = useState(1);
+  const [itemsCounter, setItemsCounter] = useState(0);
 
   const items = [
     {
@@ -86,7 +82,6 @@ const InvoiceTable = () => {
   ];
 
   // useStates for handling rows
-
   const [rows, setRows] = useState([
     {
       itemId: 0,
@@ -100,6 +95,12 @@ const InvoiceTable = () => {
   ]);
 
   React.useEffect(() => {
+    totalCalc();
+  }, [rows]);
+
+  //total calc handler
+
+  const totalCalc = () => {
     // TOTAL VAT
 
     const totalVat = rows.reduce((acc, curr) => {
@@ -108,7 +109,6 @@ const InvoiceTable = () => {
     setTotalVat(totalVat);
 
     // SUB TOTAl
-
     const subTotal = rows.reduce((acc, curr) => {
       return acc + curr.totalExc;
     }, 0);
@@ -116,14 +116,13 @@ const InvoiceTable = () => {
     setSubTotal(subTotal);
 
     // GRAND TOTAL
-
     const grandTotal = rows.reduce((acc, curr) => {
       return acc + curr.totalInc;
     }, 0);
     setGrandTotal(grandTotal);
-  }, [rows]);
+  };
 
-  //hanlder row addition
+  //handler row addition
 
   const handleNewRow = (key) => {
     const temp = [...rows];
@@ -142,7 +141,6 @@ const InvoiceTable = () => {
       });
 
       // Adding 1 to the total items counter
-
       setItemsCounter(itemsCounter + 1);
     }
 
@@ -153,47 +151,70 @@ const InvoiceTable = () => {
 
   const handleRowChange = (e, key) => {
     // Filtering specific Item
-
     const itemm = items.filter((item) => item.itemName === e.target.value);
 
     // Finding percentage of discount and vat
-
-    const discountPercent =
-      (itemm[0].discountPercentage / 100) * itemm[0].price;
-    const vatpercent = (itemm[0].vatPercentage / 100) * itemm[0].price;
-
-    //FORMULAS TO CALCULATE TOTAL EXC AND TOTAL INC
-
-    const Exc = itemm[0].price * itemm[0].quantity - discountPercent;
-    const Inc = Exc + vatpercent;
-
     const temp = [...rows];
     temp[key].itemId = itemm[0].itemId;
     temp[key].itemName = itemm[0].itemName;
     temp[key].price = itemm[0].price;
+
     temp[key].unit = itemm[0].unit;
     temp[key].quantity = itemm[0].quantity;
     temp[key].discountPercentage = itemm[0].discountPercentage;
     temp[key].vatPercentage = itemm[0].vatPercentage;
-    temp[key].totalExc = Exc;
-    temp[key].totalInc = Inc;
+
+    // Calculating total exc and total inc function
+    totalExcInc(key);
 
     //assign to state
-
     setRows(temp);
   };
 
-  //handle row deletion &&
+  // Calculating total exc and total inc function
+  const totalExcInc = (key) => {
+    const temp = [...rows];
 
+    // Calculating discount
+
+    const discountPercent =
+      (temp[key].discountPercentage / 100) * temp[key].price;
+
+    const vatpercent = (temp[key].vatPercentage / 100) * temp[key].price;
+
+    //FORMULAS TO CALCULATE TOTAL EXC AND TOTAL INC
+    const exc = temp[key].price * temp[key].quantity - discountPercent;
+    const inc = exc + vatpercent;
+
+    temp[key].totalExc = exc;
+    temp[key].totalInc = inc;
+  };
+
+  //handle row deletion &&
   const handleRowDelete = (key) => {
     const temp = [...rows];
     temp.splice(key, 1);
 
     // subtracting 1 to the total items counter
-
     setItemsCounter(itemsCounter - 1);
 
     setRows(temp);
+  };
+
+  //value change handler
+  const handleChangeValue = (e, key) => {
+    const temp = [...rows];
+    temp[key][e.target.name] = e.target.value;
+    setRows(temp);
+
+    console.log("rows", rows);
+
+    setTimeout(() => {
+      //function call for updating the total amount
+      totalExcInc(key);
+      totalCalc();
+      console.log("updated");
+    }, 1000);
   };
 
   return (
@@ -287,7 +308,8 @@ const InvoiceTable = () => {
                         <Input
                           className="text-center"
                           value={item.price}
-                          onChange={(e) => setCostPrice(e.target.value)}
+                          name="price"
+                          onChange={(e) => handleChangeValue(e, key)}
                           endAdornment={
                             <InputAdornment position="end">SAR</InputAdornment>
                           }
@@ -306,7 +328,8 @@ const InvoiceTable = () => {
                       >
                         <Input
                           value={item.quantity}
-                          onChange={(e) => setQuantity(e.target.value)}
+                          name="quantity"
+                          onChange={(e) => handleChangeValue(e, key)}
                         />
                       </FormControl>
                     </div>
@@ -342,7 +365,8 @@ const InvoiceTable = () => {
                       >
                         <Input
                           value={item.discountPercentage}
-                          onChange={(e) => setDiscount(e.target.value)}
+                          name="discountPercentage"
+                          onChange={(e) => handleChangeValue(e, key)}
                           endAdornment={
                             <InputAdornment position="end">SAR</InputAdornment>
                           }
@@ -355,12 +379,11 @@ const InvoiceTable = () => {
 
                   <div className="total br-left ">
                     <div className="mt-3 d-flex">
-                      <p
-                        // onChange={(e) => setTotalInc(e.target.value)}
-                        className=" blackColor totalIncVAT text-center ms-2"
-                      >
+                      <p className=" blackColor totalIncVAT text-center ms-2">
                         {item.totalInc} SAR
                       </p>
+
+                      {/* Delete Button */}
                       <RemoveCircleIcon
                         onClick={() => handleRowDelete(key)}
                         className="deleteIcon"
@@ -398,6 +421,8 @@ const InvoiceTable = () => {
               <p>Grand Total</p>
               <p>{grandTotal} SAR</p>
             </div>
+
+            {/* Button */}
             <div className="btn">
               <Button variant="contained">Contained</Button>
             </div>
